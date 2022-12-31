@@ -11,6 +11,7 @@ input.onButtonPressed(Button.A, function () {
 })
 input.onButtonPressed(Button.AB, function () {
     wuKong.stopAllMotor()
+    basic.showIcon(IconNames.Angry)
 })
 input.onButtonPressed(Button.B, function () {
     direccion = 1
@@ -33,7 +34,7 @@ input.onGesture(Gesture.ThreeG, function () {
             . . # . .
             `)
         wuKong.setAllMotor(100, 100)
-        direccion += 1
+        direccion = 1
     } else if (direccion == 1) {
         basic.showLeds(`
             . . # . .
@@ -43,7 +44,7 @@ input.onGesture(Gesture.ThreeG, function () {
             . . # . .
             `)
         wuKong.setAllMotor(-100, -100)
-        direccion += 0
+        direccion = 0
     }
 })
 let direccion = 0
