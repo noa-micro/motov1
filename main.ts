@@ -9,22 +9,7 @@ input.onButtonPressed(Button.A, function () {
         `)
     wuKong.setAllMotor(-60, -60)
 })
-input.onButtonPressed(Button.AB, function () {
-    wuKong.stopAllMotor()
-    basic.showIcon(IconNames.Angry)
-})
-input.onButtonPressed(Button.B, function () {
-    direccion = 1
-    basic.showLeds(`
-        . . # . .
-        . . # . .
-        # . # . #
-        . # # # .
-        . . # . .
-        `)
-    wuKong.setAllMotor(60, 60)
-})
-input.onGesture(Gesture.ThreeG, function () {
+input.onGesture(Gesture.SixG, function () {
     if (direccion == 0) {
         basic.showLeds(`
             . . # . .
@@ -47,14 +32,36 @@ input.onGesture(Gesture.ThreeG, function () {
         direccion = 0
     }
 })
+input.onButtonPressed(Button.AB, function () {
+    wuKong.stopAllMotor()
+    basic.showIcon(IconNames.Angry)
+})
+input.onButtonPressed(Button.B, function () {
+    direccion = 1
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        # . # . #
+        . # # # .
+        . . # . .
+        `)
+    wuKong.setAllMotor(60, 60)
+})
 let Ojos = 0
 let direccion = 0
 basic.showIcon(IconNames.Happy)
 basic.forever(function () {
+	
+})
+loops.everyInterval(100, function () {
     Ojos = sonarbit.sonarbit_distance(Distance_Unit.Distance_Unit_cm, DigitalPin.P1)
-    if (Ojos < 20 && Ojos > 1) {
+    if (Ojos < 10 && Ojos > 1) {
         wuKong.setAllMotor(-50, 100)
-        basic.pause(1000)
-        wuKong.setAllMotor(100, 100)
+        wuKong.setLightMode(wuKong.LightMode.BREATH)
+        wuKong.lightIntensity(100)
+        basic.pause(randint(200, 600))
+        wuKong.setLightMode(wuKong.LightMode.OFF)
+        wuKong.lightIntensity(0)
+        wuKong.setAllMotor(-60, -60)
     }
 })
