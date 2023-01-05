@@ -1,11 +1,12 @@
 {
-    "name": "Motov2",
+    "name": "Motov3 - con sonar",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "wuKong": "github:elecfreaks/pxt-wukong#v1.5.2"
+        "wuKong": "github:elecfreaks/pxt-wukong#v1.5.2",
+        "sonarbit": "github:elecfreaks/pxt-sonarbit#v1.0.5"
     },
     "files": [
         "main.blocks",
